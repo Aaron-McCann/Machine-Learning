@@ -58,3 +58,6 @@ matplotlib.pyplot.xlabel('x_1')
 matplotlib.pyplot.ylabel('x_2')
 matplotlib.pyplot.title('a(iii)')
 matplotlib.pyplot.show()
+
+
+#edit to show it working 
