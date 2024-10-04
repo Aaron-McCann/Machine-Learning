@@ -14,12 +14,13 @@ class1 = df[df["y"] == -1]
 class2 = df[df["y"] == 1]
 
 # double check that you used the right colurs and markers
-matplotlib.pyplot.scatter(class1['X1'], class1['X2'], marker = 'o', color='r', label='+1'  )
+matplotlib.pyplot.scatter(class1['X1'], class1['X2'], marker = 'o', color='r', label='-1' , edgecolor = 'k' )
 matplotlib.pyplot.scatter(class2['X1'], class2['X2'], marker = '+', color='b', label='+1'  )
 #TODO: Include legend
 matplotlib.pyplot.xlabel('x_1')
 matplotlib.pyplot.ylabel('x_2')
-matplotlib.pyplot.title('a(i)')
+matplotlib.pyplot.title('A(i): Scatter Plot of Features X1 and X2')
+matplotlib.pyplot.legend(loc = 'upper right', fontsize =12)
 matplotlib.pyplot.show()
 
 #a(ii)
@@ -53,21 +54,25 @@ w2 = model.coef_[0][1]
 
 b = model.intercept_[0]
 #TODO: change this
-range = np.linspace(-10, 10, 100)
+# Range was going to far 
+range = np.linspace(df['X1'].min(), df['X1'].max(), 100 )
+
 boundry = -((w1*range + b) / w2)
 #y_values = -(model.coef_[0][0] * range + model.intercept_[0]) / model.coef_[0][1]
 matplotlib.pyplot.plot(range, boundry, 'k-', label='Decision Boundary')
 
-matplotlib.pyplot.scatter(class1['X1'], class1['X2'], marker = 'o', color='r', label='+1'  )
-matplotlib.pyplot.scatter(class2['X1'], class2['X2'], marker = '+', color='b', label='+1'  )
-matplotlib.pyplot.scatter(p_class1['X1'], p_class1['X2'], color='b', label='+1')
-matplotlib.pyplot.scatter(p_class2['X1'], p_class2['X2'], color='g', label='+1')
+matplotlib.pyplot.scatter(class1['X1'], class1['X2'], marker = 'o', color='r', label='Actual -1'  )
+matplotlib.pyplot.scatter(class2['X1'], class2['X2'], marker = '+', color='b', label='Actual +1'  )
+matplotlib.pyplot.scatter(p_class1['X1'], p_class1['X2'], marker = 's',color='orange', label='Predicted -1')
+matplotlib.pyplot.scatter(p_class2['X1'], p_class2['X2'], marker = 'x',color='g', label='Predicted +1')
 
 
 #TODO: Include legend
 matplotlib.pyplot.xlabel('x_1')
 matplotlib.pyplot.ylabel('x_2')
-matplotlib.pyplot.title('a(iii)')
+matplotlib.pyplot.title('A(iii): Predictions and Descion Boundary')
+matplotlib.pyplot.legend(loc= 'upper right')
+matplotlib.pyplot.grid(True, linestyle = '--', alpha= 0.7) # aplpha 0.7 makes line slightly visible 
 matplotlib.pyplot.show()
 
 
