@@ -1,7 +1,7 @@
 import numpy as np
 import pandas as pd
-#df= pd.read_csv("week2.csv" )
-df = pd.read_csv('C:/Users/McCannA/Desktop/Machine Learning/Machine-Learning/Week 2/week2.csv')
+df= pd.read_csv("C:\\Users\\New\\Desktop\\Year 5\\Machine Learning\\Week 2\\week2.csv" )
+#df = pd.read_csv('C:/Users/McCannA/Desktop/Machine Learning/Machine-Learning/Week 2/week2.csv')
 
 print( df.head( ) )
 
