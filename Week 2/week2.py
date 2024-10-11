@@ -1,7 +1,7 @@
 import numpy as np
 import pandas as pd
-df= pd.read_csv("C:\\Users\\New\\Desktop\\Year 5\\Machine Learning\\Week 2\\week2.csv" )
-#df = pd.read_csv('C:/Users/McCannA/Desktop/Machine Learning/Machine-Learning/Week 2/week2.csv')
+#df= pd.read_csv("C:\\Users\\New\\Desktop\\Year 5\\Machine Learning\\Week 2\\week2.csv" )
+df = pd.read_csv('C:/Users/McCannA/Desktop/Machine Learning/Machine-Learning/Week 2/week2.csv')
 
 print( df.head( ) )
 
@@ -117,11 +117,21 @@ def desicion_boundry(model, A, Y):
     labels = model.predict(np.c_[xx.ravel(), yy.ravel()])
     labels = labels.reshape(xx.shape)
 
-    matplotlib.pyplot.contourf(xx, yy, labels, alpha=0.8, cmap=  matplotlib.pyplot.cm.coolwarm)
-    matplotlib.pyplot.scatter(X[:, 0], X[:, 1], c=Y, edgecolor='k', s=20, cmap=  matplotlib.pyplot.cm.coolwarm)
+
+    # Plot the decision boundary
+    matplotlib.pyplot.contourf(xx, yy, labels, alpha=0.8, cmap= matplotlib.pyplot.cm.coolwarm)
+
+    # Plot the actual data points
+    scatter = matplotlib.pyplot.scatter(X[:, 0], X[:, 1], c=Y, edgecolor='k', s=20, cmap= matplotlib.pyplot.cm.coolwarm)
+
+    # Create legend from the scatter plot
+    legend1 = matplotlib.pyplot.legend(*scatter.legend_elements(), title="Classes")
+    matplotlib.pyplot.gca().add_artist(legend1)
+
+    # Add labels and show the plot
     matplotlib.pyplot.xlabel('X1')
     matplotlib.pyplot.ylabel('X2')
-    #matplotlib.pyplot.title(title)
+    matplotlib.pyplot.title(f"Decision Boundary for C={model.C}")
     matplotlib.pyplot.show()
 
     
