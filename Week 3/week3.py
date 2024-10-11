@@ -7,7 +7,7 @@ import matplotlib.pyplot as m
 from mpl_toolkits.mplot3d import Axes3D
 
 
-df = p.read_csv('Week 3\week3.csv')
+df = p.read_csv('Machine-Learning/Week 3/week3.csv')
 print(df.head())
 
 df.columns = ['1', '2' , 'y']
@@ -36,7 +36,7 @@ print(polynomial[:5, :])
 C = [1, 10, 100, 1000]
 param = {}
 for c in C:
-    model = Lasso(alpha = 1/c, max_iter= 100) #why this alpha?
+    model = Lasso(alpha = 1/2*c, max_iter= 100) #why this alpha?
     model.fit(polynomial,y)
     param[c] = model.coef_
 
@@ -205,7 +205,7 @@ def ii_a (X, y, model, C, cv = 5):
         model.set_params(alpha=C)
         scores = cross_val_score (model, X, y, cv = cv, scoring = 'neg_mean_squares_error') # why this loss function. Explain in report 
         errors.append (-scores.mean())
-        plt.errorbar(Cs, errors, yerr=np.std(errors), fmt='o-')
+        plt.errorbar(c, errors, yerr=np.std(errors), fmt='o-')
         plt.xlabel('C')
         plt.ylabel('Mean Squared Error')
         plt.title('Error vs C')
